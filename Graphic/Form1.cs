@@ -63,15 +63,22 @@ namespace Graphic
 
         private void ensamblar_Click(object sender, EventArgs e)
         {
-            if (path != null && asm_code.Lines != null && asm_code.Lines.Length > 0)
+            if (asm_code.Lines != null && asm_code.Lines.Length > 0)
             {
-                analizador = new Analizador(asm_code.Lines);
-                analizador.Ensamblar();
+                try
+                {
+                    analizador = new Analizador(asm_code.Lines);
+                    analizador.Ensamblar();
 
-                Fill_Intermediary_File(analizador.intermediary_code, analizador.asm_code);
-                Fill_TabSim(analizador.symbol_table);
-                Fill_Registers(analizador.registers);
-                Fill_Errors();
+                    Fill_Intermediary_File(analizador.intermediary_code, analizador.asm_code);
+                    Fill_TabSim(analizador.symbol_table);
+                    Fill_Registers(analizador.registers);
+                    Fill_Errors();
+                }
+                catch
+                {
+                    MessageBox.Show("Error en lectura de código. Programa sensible a espacios en blanco y tabulaciones", "Error");
+                }
             }
         }
 
@@ -432,12 +439,11 @@ namespace Graphic
         private void VisualizaSigInstruccion(string CP)
         {
             int entero_pc = Convert.ToInt32(CP, 16);
-
             string text_CP = info_CP.Text = CP;
             string text_bytes = info_bytes.Text = GetBytes(entero_pc);
             string text_codop = info_codop.Text = GetCodOp(info_bytes.Text);
 
-            if(instrucciones.ContainsKey(text_codop))
+            if (instrucciones.ContainsKey(text_codop))
             {
                 string text_modo = info_modo.Text = GetModoDeDireccionamiento(info_bytes.Text);
                 string text_direccion = info_direccion.Text = GetDirectionInBytes(info_bytes.Text, info_modo.Text);
@@ -448,13 +454,13 @@ namespace Graphic
                 string[] efectos = text_efecto.Split('\n');
 
                 print_info.Text += "\n---------------------------------------------------------------------------------" +
-                                     "---------------------------------------------------------------------------------" +
-                                   "\n Siguiente Instrucción:" +
-                                   "\n\t CP = " + text_CP + "\t\t\t\t CP = "+ text_sigPC + 
-                                   "\n\t Bytes = " + text_bytes + "\t\t\t\t Efecto = " + text_nemonico +
-                                   "\n\t CodOp = " + text_codop + "\t\t\t\t\t " + efectos[0] +
-                                   "\n\t Modo de Direccionamiento = " + text_modo + "\t\t " + efectos[1] +
-                                   "\n\t m = " + text_direccion + "\n";
+                                        "---------------------------------------------------------------------------------" +
+                                    "\n Siguiente Instrucción:" +
+                                    "\n\t CP = " + text_CP + "\t\t\t\t CP = " + text_sigPC +
+                                    "\n\t Bytes = " + text_bytes + "\t\t\t\t Efecto = " + text_nemonico +
+                                    "\n\t CodOp = " + text_codop + "\t\t\t\t\t " + efectos[0] +
+                                    "\n\t Modo de Direccionamiento = " + text_modo + "\t\t " + efectos[1] +
+                                    "\n\t m = " + text_direccion + "\n";
             }
             else
                 End();
@@ -462,7 +468,7 @@ namespace Graphic
 
         private void End()
         {
-            if (!programa_objeto.terminado)
+            if (programa_objeto != null && !programa_objeto.terminado)
             {
                 programa_objeto.terminado = true;
                 MessageBox.Show("Fin del programa. Ya no se pueden leer más instrucciones",
@@ -476,10 +482,18 @@ namespace Graphic
             string m = info_direccion.Text;
             string modo = info_modo.Text;
 
-            if(!programa_objeto.terminado)
-                instrucciones[codOp].Item2(m);
-
-            VisualizaSigInstruccion(registro_CP.Text);
+            try
+            {
+                if (!programa_objeto.terminado)
+                {
+                    instrucciones[codOp].Item2(m);
+                    VisualizaSigInstruccion(registro_CP.Text);
+                }
+            }
+            catch
+            {
+                End();
+            }
             return true;
         }
 
