@@ -140,7 +140,7 @@ namespace Graphic
         static private string WriteHeaderRegister(FileStream file, string name, int pc_inicial, int pc_final)
         {
             BinaryWriter bn = new BinaryWriter(file);
-            string temp = 'H' + name.PadRight(6,' ') + pc_inicial.ToString("X6") + (pc_final - pc_inicial).ToString("X6");
+            string temp = 'H' + name.PadRight(6,' ').Substring(0, 6) + pc_inicial.ToString("X6") + (pc_final - pc_inicial).ToString("X6");
             bn.Write(UTF8Encoding.Default.GetBytes(temp));
             return temp;
 
