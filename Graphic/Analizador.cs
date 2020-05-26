@@ -125,7 +125,7 @@ namespace Graphic
                             foreach (char c in temp_obj)
                             {
                                 if (c != '&')
-                                    temp2_obj += ((int)c).ToString();
+                                    temp2_obj += ((int)c).ToString("X2");
                             }
                             temp_obj = temp2_obj;
                         }
