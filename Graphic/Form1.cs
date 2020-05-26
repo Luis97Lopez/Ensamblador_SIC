@@ -398,6 +398,7 @@ namespace Graphic
             registro_L.Text = "FFFFFF";
             registro_X.Text = "FFFFFF";
             registro_SW.Text = "FFFFFF";
+            print_info.Text = "";
 
             VisualizaSigInstruccion(CP.ToString("X6"));
         }
@@ -422,6 +423,8 @@ namespace Graphic
             info_sigCP.Text = "-";
             info_efecto.Text = "-";
 
+            print_info.Text = "";
+
             dgv_cargador.Rows.Clear();
             dgv_cargador.Visible = false;
         }
@@ -430,17 +433,28 @@ namespace Graphic
         {
             int entero_pc = Convert.ToInt32(CP, 16);
 
-            info_CP.Text = CP;
-            info_bytes.Text = GetBytes(entero_pc);
-            info_codop.Text = GetCodOp(info_bytes.Text);
+            string text_CP = info_CP.Text = CP;
+            string text_bytes = info_bytes.Text = GetBytes(entero_pc);
+            string text_codop = info_codop.Text = GetCodOp(info_bytes.Text);
 
-            if(instrucciones.ContainsKey(info_codop.Text))
+            if(instrucciones.ContainsKey(text_codop))
             {
-                info_modo.Text = GetModoDeDireccionamiento(info_bytes.Text);
-                info_direccion.Text = GetDirectionInBytes(info_bytes.Text, info_modo.Text);
-                info_nemonico.Text = instrucciones[info_codop.Text].Item1;
-                info_efecto.Text = instrucciones[info_codop.Text].Item3(info_direccion.Text);
-                info_sigCP.Text = GetNextPC(info_direccion.Text, info_codop.Text, entero_pc);
+                string text_modo = info_modo.Text = GetModoDeDireccionamiento(info_bytes.Text);
+                string text_direccion = info_direccion.Text = GetDirectionInBytes(info_bytes.Text, info_modo.Text);
+                string text_nemonico = info_nemonico.Text = instrucciones[info_codop.Text].Item1;
+                string text_efecto = info_efecto.Text = instrucciones[info_codop.Text].Item3(info_direccion.Text);
+                string text_sigPC = info_sigCP.Text = GetNextPC(info_direccion.Text, info_codop.Text, entero_pc);
+
+                string[] efectos = text_efecto.Split('\n');
+
+                print_info.Text += "\n---------------------------------------------------------------------------------" +
+                                     "---------------------------------------------------------------------------------" +
+                                   "\n Siguiente Instrucción:" +
+                                   "\n\t CP = " + text_CP + "\t\t\t\t CP = "+ text_sigPC + 
+                                   "\n\t Bytes = " + text_bytes + "\t\t\t\t Efecto = " + text_nemonico +
+                                   "\n\t CodOp = " + text_codop + "\t\t\t\t\t " + efectos[0] +
+                                   "\n\t Modo de Direccionamiento = " + text_modo + "\t\t " + efectos[1] +
+                                   "\n\t m = " + text_direccion + "\n";
             }
             else
                 End();
