@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Antlr4;
 using Antlr4.Runtime;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Graphic
 {
@@ -69,21 +70,26 @@ namespace Graphic
                 {
                     analizador = new Analizador(asm_code.Lines);
                     analizador.Ensamblar();
-
-                    Fill_Intermediary_File(analizador.intermediary_code, analizador.asm_code);
-                    Fill_TabSim(analizador.symbol_table);
-                    Fill_Registers(analizador.registers);
-                    Fill_Errors();
                 }
                 catch
                 {
                     MessageBox.Show("Error en lectura de código. Programa sensible a espacios en blanco y tabulaciones", "Error");
+                }
+                finally
+                {
+                    Fill_Intermediary_File(analizador.intermediary_code, analizador.asm_code);
+                    Fill_TabSim(analizador.symbol_table);
+                    Fill_Registers(analizador.registers);
+                    Fill_Errors();
+
+                    MessageBox.Show("Ensamblado se realizó con éxito");
                 }
             }
         }
 
         private void Fill_Intermediary_File(List<Tuple<string, string>> file, string[] code)
         {
+            Dictionary<string,string> tabsim = analizador.symbol_table;
             List<string[]> res = new List<string[]>();
             int i = 0;
             foreach (var item in code)
@@ -91,7 +97,8 @@ namespace Graphic
 
                 if (item != "")
                 {
-                    string[] temp = item.Split('\t');
+
+                    string[] temp = item.Split(new char[]{' ', '\t'}, 3);
                     string temp_object_code;
                     string temp_operando;
 
@@ -100,12 +107,17 @@ namespace Graphic
                     else
                         temp_object_code = "Error de Sintaxis";
 
+                    
                     if (temp.Length > 2)
                         temp_operando = temp[2];
                     else
                         temp_operando = "";
-
-                    res.Add(new string[] { (i + 1).ToString(), file[i++].Item1, temp[0], temp[1], temp_operando, temp_object_code });
+                        
+                    try
+                    {
+                        res.Add(new string[] { (i + 1).ToString(), file[i++].Item1, temp[0], temp[1], temp_operando, temp_object_code });
+                    }
+                    catch { }
                 }
             }
 
@@ -178,7 +190,6 @@ namespace Graphic
                     {
                         prueba.Close();
                         OpenCodeFile(saveFileDialog.FileName);
-
                     }
                 }
             }

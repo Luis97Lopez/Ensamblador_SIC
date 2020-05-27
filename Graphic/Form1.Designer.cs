@@ -56,7 +56,23 @@
             this.tab_control = new System.Windows.Forms.TabControl();
             this.tab_ensamblador = new System.Windows.Forms.TabPage();
             this.tab_cargador = new System.Windows.Forms.TabPage();
+            this.print_info = new System.Windows.Forms.RichTextBox();
+            this.info_efecto = new System.Windows.Forms.Label();
             this.boton_cerrar_programa = new System.Windows.Forms.Button();
+            this.info_nemonico = new System.Windows.Forms.Label();
+            this.info_sigCP = new System.Windows.Forms.Label();
+            this.info_direccion = new System.Windows.Forms.Label();
+            this.info_modo = new System.Windows.Forms.Label();
+            this.info_codop = new System.Windows.Forms.Label();
+            this.info_bytes = new System.Windows.Forms.Label();
+            this.info_CP = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label_instrucciones = new System.Windows.Forms.Label();
             this.numeric_instrucciones = new System.Windows.Forms.NumericUpDown();
             this.boton_ejecutar = new System.Windows.Forms.Button();
@@ -95,22 +111,6 @@
             this.dig_D = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dig_E = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dig_F = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.print_info = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.info_CP = new System.Windows.Forms.Label();
-            this.info_bytes = new System.Windows.Forms.Label();
-            this.info_codop = new System.Windows.Forms.Label();
-            this.info_modo = new System.Windows.Forms.Label();
-            this.info_direccion = new System.Windows.Forms.Label();
-            this.info_sigCP = new System.Windows.Forms.Label();
-            this.info_nemonico = new System.Windows.Forms.Label();
-            this.info_efecto = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_archivo_intermedio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_tabsim)).BeginInit();
@@ -441,6 +441,30 @@
             this.tab_cargador.TabIndex = 1;
             this.tab_cargador.Text = "Cargador";
             // 
+            // print_info
+            // 
+            this.print_info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.print_info.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.print_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.print_info.Location = new System.Drawing.Point(461, 430);
+            this.print_info.Name = "print_info";
+            this.print_info.ReadOnly = true;
+            this.print_info.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.print_info.ShowSelectionMargin = true;
+            this.print_info.Size = new System.Drawing.Size(727, 163);
+            this.print_info.TabIndex = 43;
+            this.print_info.Text = "";
+            // 
+            // info_efecto
+            // 
+            this.info_efecto.AutoSize = true;
+            this.info_efecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_efecto.Location = new System.Drawing.Point(727, 522);
+            this.info_efecto.Name = "info_efecto";
+            this.info_efecto.Size = new System.Drawing.Size(14, 18);
+            this.info_efecto.TabIndex = 42;
+            this.info_efecto.Text = "-";
+            // 
             // boton_cerrar_programa
             // 
             this.boton_cerrar_programa.Location = new System.Drawing.Point(937, 26);
@@ -451,15 +475,155 @@
             this.boton_cerrar_programa.UseVisualStyleBackColor = true;
             this.boton_cerrar_programa.Click += new System.EventHandler(this.boton_cerrar_programa_Click);
             // 
+            // info_nemonico
+            // 
+            this.info_nemonico.AutoSize = true;
+            this.info_nemonico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_nemonico.Location = new System.Drawing.Point(727, 492);
+            this.info_nemonico.Name = "info_nemonico";
+            this.info_nemonico.Size = new System.Drawing.Size(14, 18);
+            this.info_nemonico.TabIndex = 40;
+            this.info_nemonico.Text = "-";
+            // 
+            // info_sigCP
+            // 
+            this.info_sigCP.AutoSize = true;
+            this.info_sigCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_sigCP.Location = new System.Drawing.Point(719, 447);
+            this.info_sigCP.Name = "info_sigCP";
+            this.info_sigCP.Size = new System.Drawing.Size(14, 18);
+            this.info_sigCP.TabIndex = 39;
+            this.info_sigCP.Text = "-";
+            // 
+            // info_direccion
+            // 
+            this.info_direccion.AutoSize = true;
+            this.info_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_direccion.Location = new System.Drawing.Point(499, 565);
+            this.info_direccion.Name = "info_direccion";
+            this.info_direccion.Size = new System.Drawing.Size(14, 18);
+            this.info_direccion.TabIndex = 38;
+            this.info_direccion.Text = "-";
+            // 
+            // info_modo
+            // 
+            this.info_modo.AutoSize = true;
+            this.info_modo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_modo.Location = new System.Drawing.Point(650, 535);
+            this.info_modo.Name = "info_modo";
+            this.info_modo.Size = new System.Drawing.Size(14, 18);
+            this.info_modo.TabIndex = 37;
+            this.info_modo.Text = "-";
+            // 
+            // info_codop
+            // 
+            this.info_codop.AutoSize = true;
+            this.info_codop.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_codop.Location = new System.Drawing.Point(537, 503);
+            this.info_codop.Name = "info_codop";
+            this.info_codop.Size = new System.Drawing.Size(14, 18);
+            this.info_codop.TabIndex = 36;
+            this.info_codop.Text = "-";
+            // 
+            // info_bytes
+            // 
+            this.info_bytes.AutoSize = true;
+            this.info_bytes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_bytes.Location = new System.Drawing.Point(520, 472);
+            this.info_bytes.Name = "info_bytes";
+            this.info_bytes.Size = new System.Drawing.Size(14, 18);
+            this.info_bytes.TabIndex = 35;
+            this.info_bytes.Text = "-";
+            // 
+            // info_CP
+            // 
+            this.info_CP.AutoSize = true;
+            this.info_CP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_CP.Location = new System.Drawing.Point(499, 447);
+            this.info_CP.Name = "info_CP";
+            this.info_CP.Size = new System.Drawing.Size(14, 18);
+            this.info_CP.TabIndex = 34;
+            this.info_CP.Text = "-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(671, 447);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 17);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "CP = ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(671, 492);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 17);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Efecto:  ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(464, 565);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 17);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "m = ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(464, 535);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(180, 17);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Modo de Direccionamiento:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(464, 503);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 17);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "CodOp = ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(464, 472);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 17);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Bytes = ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(464, 447);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 17);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "CP = ";
+            // 
             // label_instrucciones
             // 
             this.label_instrucciones.AutoSize = true;
             this.label_instrucciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_instrucciones.Location = new System.Drawing.Point(583, 404);
             this.label_instrucciones.Name = "label_instrucciones";
-            this.label_instrucciones.Size = new System.Drawing.Size(79, 15);
+            this.label_instrucciones.Size = new System.Drawing.Size(179, 15);
             this.label_instrucciones.TabIndex = 25;
-            this.label_instrucciones.Text = "Instrucciones";
+            this.label_instrucciones.Text = "Instrucciones    ó     Presione F9";
             // 
             // numeric_instrucciones
             // 
@@ -775,170 +939,6 @@
             // 
             this.dig_F.HeaderText = "F";
             this.dig_F.Name = "dig_F";
-            // 
-            // print_info
-            // 
-            this.print_info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.print_info.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.print_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.print_info.Location = new System.Drawing.Point(461, 430);
-            this.print_info.Name = "print_info";
-            this.print_info.ReadOnly = true;
-            this.print_info.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.print_info.ShowSelectionMargin = true;
-            this.print_info.Size = new System.Drawing.Size(727, 163);
-            this.print_info.TabIndex = 43;
-            this.print_info.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(464, 447);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 17);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "CP = ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(464, 472);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 17);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Bytes = ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(464, 503);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 17);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "CodOp = ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(464, 535);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(180, 17);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Modo de Direccionamiento:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(464, 565);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 17);
-            this.label9.TabIndex = 30;
-            this.label9.Text = "m = ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(671, 492);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 17);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Efecto:  ";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(671, 447);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 17);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "CP = ";
-            // 
-            // info_CP
-            // 
-            this.info_CP.AutoSize = true;
-            this.info_CP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_CP.Location = new System.Drawing.Point(499, 447);
-            this.info_CP.Name = "info_CP";
-            this.info_CP.Size = new System.Drawing.Size(14, 18);
-            this.info_CP.TabIndex = 34;
-            this.info_CP.Text = "-";
-            // 
-            // info_bytes
-            // 
-            this.info_bytes.AutoSize = true;
-            this.info_bytes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_bytes.Location = new System.Drawing.Point(520, 472);
-            this.info_bytes.Name = "info_bytes";
-            this.info_bytes.Size = new System.Drawing.Size(14, 18);
-            this.info_bytes.TabIndex = 35;
-            this.info_bytes.Text = "-";
-            // 
-            // info_codop
-            // 
-            this.info_codop.AutoSize = true;
-            this.info_codop.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_codop.Location = new System.Drawing.Point(537, 503);
-            this.info_codop.Name = "info_codop";
-            this.info_codop.Size = new System.Drawing.Size(14, 18);
-            this.info_codop.TabIndex = 36;
-            this.info_codop.Text = "-";
-            // 
-            // info_modo
-            // 
-            this.info_modo.AutoSize = true;
-            this.info_modo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_modo.Location = new System.Drawing.Point(650, 535);
-            this.info_modo.Name = "info_modo";
-            this.info_modo.Size = new System.Drawing.Size(14, 18);
-            this.info_modo.TabIndex = 37;
-            this.info_modo.Text = "-";
-            // 
-            // info_direccion
-            // 
-            this.info_direccion.AutoSize = true;
-            this.info_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_direccion.Location = new System.Drawing.Point(499, 565);
-            this.info_direccion.Name = "info_direccion";
-            this.info_direccion.Size = new System.Drawing.Size(14, 18);
-            this.info_direccion.TabIndex = 38;
-            this.info_direccion.Text = "-";
-            // 
-            // info_sigCP
-            // 
-            this.info_sigCP.AutoSize = true;
-            this.info_sigCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_sigCP.Location = new System.Drawing.Point(719, 447);
-            this.info_sigCP.Name = "info_sigCP";
-            this.info_sigCP.Size = new System.Drawing.Size(14, 18);
-            this.info_sigCP.TabIndex = 39;
-            this.info_sigCP.Text = "-";
-            // 
-            // info_nemonico
-            // 
-            this.info_nemonico.AutoSize = true;
-            this.info_nemonico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_nemonico.Location = new System.Drawing.Point(727, 492);
-            this.info_nemonico.Name = "info_nemonico";
-            this.info_nemonico.Size = new System.Drawing.Size(14, 18);
-            this.info_nemonico.TabIndex = 40;
-            this.info_nemonico.Text = "-";
-            // 
-            // info_efecto
-            // 
-            this.info_efecto.AutoSize = true;
-            this.info_efecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_efecto.Location = new System.Drawing.Point(727, 522);
-            this.info_efecto.Name = "info_efecto";
-            this.info_efecto.Size = new System.Drawing.Size(14, 18);
-            this.info_efecto.TabIndex = 42;
-            this.info_efecto.Text = "-";
             // 
             // lab_grafico
             // 
