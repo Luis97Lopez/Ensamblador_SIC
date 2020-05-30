@@ -70,19 +70,17 @@ namespace Graphic
                 {
                     analizador = new Analizador(asm_code.Lines);
                     analizador.Ensamblar();
-                }
-                catch
-                {
-                    MessageBox.Show("Error en lectura de código. Programa sensible a espacios en blanco y tabulaciones", "Error");
-                }
-                finally
-                {
+
                     Fill_Intermediary_File(analizador.intermediary_code, analizador.asm_code);
                     Fill_TabSim(analizador.symbol_table);
                     Fill_Registers(analizador.registers);
                     Fill_Errors();
 
                     MessageBox.Show("Ensamblado se realizó con éxito");
+                }
+                catch
+                {
+                    MessageBox.Show("Error en lectura de código. Programa sensible a espacios en blanco y tabulaciones", "Error");
                 }
             }
         }
@@ -143,6 +141,7 @@ namespace Graphic
         {
             if (path != null)
             {
+                asm_code.Lines = null;
                 path = null;
                 ClearAll();
                 this.Text = this.Text.Substring(0, this.Text.IndexOf('-') - 1);
@@ -155,7 +154,7 @@ namespace Graphic
             openFileDialog.InitialDirectory = Environment.CurrentDirectory + @"\Codes";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (OpenCodeFile(openFileDialog.FileName))
+                if (!OpenCodeFile(openFileDialog.FileName))
                     MessageBox.Show("Error al abrir archivo.", "Error");
             }
         }
@@ -165,9 +164,10 @@ namespace Graphic
             if (temp_path != null)
             {
                 this.path = temp_path;
+                ClearAll();
                 FillAsmCode();
                 this.Text += " - " + Path.GetFileName(path);
-                return false;
+                return true;
             }
             return false;
         }
@@ -197,7 +197,6 @@ namespace Graphic
 
         private void ClearAll()
         {
-            asm_code.Lines = null;
             dgv_archivo_intermedio.Rows.Clear();
             dgv_tabsim.Rows.Clear();
             errores.Text = "";
@@ -214,6 +213,7 @@ namespace Graphic
             if (path != null)
             {
                 path = null;
+                asm_code.Lines = null;
                 ClearAll();
                 this.Text = this.Text.Substring(0, this.Text.IndexOf('-') - 1);
             }
