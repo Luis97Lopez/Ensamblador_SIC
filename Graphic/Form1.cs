@@ -150,6 +150,9 @@ namespace Graphic
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (path != null)
+                this.Text = this.Text.Substring(0, this.Text.IndexOf('-') - 1);
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.CurrentDirectory + @"\Codes";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -187,10 +190,9 @@ namespace Graphic
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     if ((prueba = saveFileDialog.OpenFile()) != null)
-                    {
                         prueba.Close();
-                        OpenCodeFile(saveFileDialog.FileName);
-                    }
+                    File.WriteAllLines(saveFileDialog.FileName, asm_code.Lines);
+                    OpenCodeFile(saveFileDialog.FileName);
                 }
             }
         }
@@ -216,6 +218,7 @@ namespace Graphic
                 asm_code.Lines = null;
                 ClearAll();
                 this.Text = this.Text.Substring(0, this.Text.IndexOf('-') - 1);
+                ClearCargador();
             }
         }
 
@@ -228,6 +231,28 @@ namespace Graphic
         }
 
         private void boton_cargar_Click(object sender, EventArgs e)
+        {
+            if (analizador != null && path != null)
+            {
+                var lines = analizador.registers.ToArray();
+                programa_objeto = new Programa_Objeto(lines);
+                if (programa_objeto.Initialize())
+                {
+                    crea_mapa_memoria();
+                    carga_a_memoria();
+                }
+                else
+                {
+                    programa_objeto = null;
+                    MessageBox.Show("Error al cargar archivo objeto.", "Error");
+                    ClearCargador();
+                }
+            }
+            else
+                MessageBox.Show("Primero ensamble el programa", "Error");
+        }
+
+        private void boton_abrir_objeto_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.CurrentDirectory + @"\Files\";
@@ -1028,5 +1053,7 @@ namespace Graphic
         {
             return "Instrucción WD no disponible";
         }
+
+
     }
 } 

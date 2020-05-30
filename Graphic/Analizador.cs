@@ -228,9 +228,9 @@ namespace Graphic
             else
                 dir = "FFFFFF";
 
-            res = "\nE" + dir;
+            res = "E" + dir;
 
-            bn.Write(UTF8Encoding.Default.GetBytes(res));
+            bn.Write(UTF8Encoding.Default.GetBytes("\n" + res));
             return res;
 
         }

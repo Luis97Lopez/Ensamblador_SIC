@@ -111,6 +111,7 @@
             this.dig_D = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dig_E = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dig_F = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boton_abrir_objeto = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_archivo_intermedio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_tabsim)).BeginInit();
@@ -396,6 +397,7 @@
             // tab_cargador
             // 
             this.tab_cargador.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tab_cargador.Controls.Add(this.boton_abrir_objeto);
             this.tab_cargador.Controls.Add(this.print_info);
             this.tab_cargador.Controls.Add(this.info_efecto);
             this.tab_cargador.Controls.Add(this.boton_cerrar_programa);
@@ -467,9 +469,9 @@
             // 
             // boton_cerrar_programa
             // 
-            this.boton_cerrar_programa.Location = new System.Drawing.Point(937, 26);
+            this.boton_cerrar_programa.Location = new System.Drawing.Point(1030, 26);
             this.boton_cerrar_programa.Name = "boton_cerrar_programa";
-            this.boton_cerrar_programa.Size = new System.Drawing.Size(216, 23);
+            this.boton_cerrar_programa.Size = new System.Drawing.Size(158, 23);
             this.boton_cerrar_programa.TabIndex = 41;
             this.boton_cerrar_programa.Text = "Cerrar Programa Objeto";
             this.boton_cerrar_programa.UseVisualStyleBackColor = true;
@@ -817,9 +819,9 @@
             // 
             // boton_cargar
             // 
-            this.boton_cargar.Location = new System.Drawing.Point(674, 26);
+            this.boton_cargar.Location = new System.Drawing.Point(615, 26);
             this.boton_cargar.Name = "boton_cargar";
-            this.boton_cargar.Size = new System.Drawing.Size(216, 23);
+            this.boton_cargar.Size = new System.Drawing.Size(158, 23);
             this.boton_cargar.TabIndex = 1;
             this.boton_cargar.Text = "Cargar Programa Objeto";
             this.boton_cargar.UseVisualStyleBackColor = true;
@@ -940,6 +942,16 @@
             this.dig_F.HeaderText = "F";
             this.dig_F.Name = "dig_F";
             // 
+            // boton_abrir_objeto
+            // 
+            this.boton_abrir_objeto.Location = new System.Drawing.Point(821, 26);
+            this.boton_abrir_objeto.Name = "boton_abrir_objeto";
+            this.boton_abrir_objeto.Size = new System.Drawing.Size(158, 23);
+            this.boton_abrir_objeto.TabIndex = 44;
+            this.boton_abrir_objeto.Text = "Abrir Programa Objeto";
+            this.boton_abrir_objeto.UseVisualStyleBackColor = true;
+            this.boton_abrir_objeto.Click += new System.EventHandler(this.boton_abrir_objeto_Click);
+            // 
             // lab_grafico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1053,6 +1065,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button boton_abrir_objeto;
     }
 }
 

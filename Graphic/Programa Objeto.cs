@@ -27,12 +27,21 @@ namespace Graphic
             registers = new List<Registro>();
         }
 
+        public Programa_Objeto(string[] lines)
+        {
+            this.lines = lines;
+            registers = new List<Registro>();
+        }
+
         public bool Initialize()
         {
             try
             {
                 foreach (var item in lines)
                 {
+                    if (item.Length == 0)
+                        continue;
+
                     char tipo = item[0];
                     if (tipo == 'H')
                     {
