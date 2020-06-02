@@ -350,7 +350,6 @@ namespace Graphic
                 if (index_column == 0)
                     index_row++;
             }
-
             return res;
         }
 
@@ -544,7 +543,7 @@ namespace Graphic
         private void boton_ejecutar_Click(object sender, EventArgs e)
         {
             int numero = Int32.Parse(numeric_instrucciones.Value.ToString());
-            numeric_instrucciones.Value = 0;
+            //numeric_instrucciones.Value = 0;
 
             for (int i = 0; i < numero; i++)
                 EjecutarSigInstruccion();
