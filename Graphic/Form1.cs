@@ -273,6 +273,29 @@ namespace Graphic
             }
         }
 
+        private void tab_control_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 120)
+            {
+                EjecutarSigInstruccion();
+            }
+        }
+
+        private void boton_ejecutar_Click(object sender, EventArgs e)
+        {
+            int numero = Int32.Parse(numeric_instrucciones.Value.ToString());
+            //numeric_instrucciones.Value = 0;
+
+            for (int i = 0; i < numero; i++)
+                EjecutarSigInstruccion();
+        }
+
+        private void boton_cerrar_programa_Click(object sender, EventArgs e)
+        {
+            programa_objeto = null;
+            ClearCargador();
+        }
+
         private void crea_mapa_memoria()
         {
             int size = programa_objeto.size;
@@ -530,29 +553,6 @@ namespace Graphic
                 End();
             }
             return true;
-        }
-
-        private void tab_control_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 120)
-            {
-                EjecutarSigInstruccion();
-            }
-        }
-
-        private void boton_ejecutar_Click(object sender, EventArgs e)
-        {
-            int numero = Int32.Parse(numeric_instrucciones.Value.ToString());
-            //numeric_instrucciones.Value = 0;
-
-            for (int i = 0; i < numero; i++)
-                EjecutarSigInstruccion();
-        }
-
-        private void boton_cerrar_programa_Click(object sender, EventArgs e)
-        {
-            programa_objeto = null;
-            ClearCargador();
         }
 
         private string Get3DirectionsParentheses(string m)
